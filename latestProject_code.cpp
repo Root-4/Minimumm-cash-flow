@@ -94,7 +94,9 @@ public:
 		{
 			for (int c = 0; c < col; c++)
 			{
-				inputfile >> arr[r][c];
+				int z;
+				inputfile >> z;
+				arr[r].push_back(z);
 			}
 		}
 		for (int i = 0; i < 20; i++)
@@ -113,7 +115,7 @@ public:
 		// sort(bitonic,bitonic+20);
 		cout << "The order in which we should approach is:" << endl;
 		for (int i = 0; i < 20; i++)
-			cout << names[i] << endl;
+			cout << names[order[i]] << endl;
 	}
 
 	// Function to return max value that can be put in knapsack of capacity W.
