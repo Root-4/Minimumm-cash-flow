@@ -397,13 +397,13 @@ public:
 		char ch;
 		if (t == 1)
 		{
-			cout << "\t\t\t\t    To validate your credit card number, enter [Y/y]: ";
+			cout << "\n\t\t\t\t    To validate your credit card number, enter [Y/y]: ";
 			cin >> ch;
 
 			if (ch == 'Y' || ch == 'y')
 			{
 				string cardNum;
-				cout << "\t\t\t\t    Enter your credit card number for validation: ";
+				cout << "\n\t\t\t\t    Enter your credit card number for validation: ";
 				cin >> cardNum;
 				LuhnAlgorithm(cardNum);
 			}
@@ -411,12 +411,13 @@ public:
 
 		else if (t == 2)
 		{
-			cout << "\t\t\t\t    Do you want a credit card? [Y/N]\n";
+			cout << "\t\t\t\t    Do you want a credit card? [Y/N]: ";
 			cin >> ch;
 
 			if (ch == 'Y' || ch == 'y')
 			{
 				creditCardNum = creditCardGenerator();
+				cout << "\t\t\t\t    Your Credit card number: " << creditCardNum << endl;
 			}
 		}
 
