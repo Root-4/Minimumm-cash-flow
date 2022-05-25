@@ -70,6 +70,52 @@ public:
 
 		return large;
 	}
+	int bitonicmain()
+	{
+		vector<int> arr[20];
+		int lar = 0;
+		int bitonic[20];
+		int largest = -9999;
+
+		string names[20] = {"Ayush", "Mudit", "Siddharth", "Drishika",
+							"Shraddha", "Manu", "Neta Neta", "Dixit", "bansal", "Modi",
+							"Jain", "Kaushik", "Chauhan", "Garg", "Singhai", "Pathak",
+							"Narang", "Saxena", "Krishna", "Gupta"};
+
+		// accesing data from file activity.txt
+
+		int row = 20;
+		int col = 10;
+		ifstream inputfile("activity.txt");
+		if (!inputfile.is_open())
+			cout << "Error opening file";
+		for (int r = 0; r < row; r++)
+		{
+			for (int c = 0; c < col; c++)
+			{
+				inputfile >> arr[r][c];
+			}
+		}
+		for (int i = 0; i < 20; i++)
+		{
+			int temp = LongestBitonicSequence(arr[i]);
+			bitonic[i] = temp * 10 + i;
+			// bitonic[i][1]=i;
+		}
+		sort(bitonic, bitonic + 20);
+		int order[20];
+		for (int i = 0; i < 20; i++)
+		{
+			// order[i]=bitonic[i]/10;
+			order[i] = bitonic[i] % 10;
+		}
+		// sort(bitonic,bitonic+20);
+		cout << "The order in which we should approach is:" << endl;
+		for (int i = 0; i < 20; i++)
+			cout << names[i] << endl;
+		return 0;
+	}
+
 
 	// Function to return max value that can be put in knapsack of capacity W.
 	int knapSack(int W, int wt[], int val[], int n)
