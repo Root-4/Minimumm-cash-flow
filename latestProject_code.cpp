@@ -99,30 +99,39 @@ public:
 		return dp[n][W];
 	}
 
-	long long int count(int S[], int n, int sum)
-	{
-		long long dp[sum + 1][n + 1];
-		for (int i = 0; i <= n; i++)
-		{
-			dp[0][i] = 1;
-		}
+	int minCoins(int V)
+{
+    // table[i] will be storing the minimum number of coins
+    // required for i value.  So table[V] will have result
+    int coins[] = {2000, 1000, 500, 200, 100, 50, 20, 10};
+    int table[V + 1];
+    int m = 8;
+    // Base case (If given value V is 0)
+    table[0] = 0;
 
-		for (int i = 1; i <= sum; i++)
-		{
-			dp[i][0] = 0;
-		}
+    // Initialize all table values as Infinite
+    for (int i = 1; i <= V; i++)
+        table[i] = INT_MAX;
 
-		for (int i = 1; i <= sum; i++)
-		{
-			for (int j = 1; j <= n; j++)
-			{
-				dp[i][j] = dp[i][j - 1];
-				if (S[j - 1] <= i)
-					dp[i][j] += dp[i - S[j - 1]][j];
-			}
-		}
-		return dp[sum][n];
-	}
+    // Compute minimum coins required for all
+    // values from 1 to V
+    for (int i = 1; i <= V; i++)
+    {
+        // Go through all coins smaller than i
+        for (int j = 0; j < m; j++)
+            if (coins[j] <= i)
+            {
+                int sub_res = table[i - coins[j]];
+                if (sub_res != INT_MAX && sub_res + 1 < table[i])
+                    table[i] = sub_res + 1;
+            }
+    }
+
+    if (table[V] == INT_MAX)
+        return -1;
+
+    return table[V];
+}
 
 	// For credit card validation
 	bool LuhnAlgorithm(string cardNum)
