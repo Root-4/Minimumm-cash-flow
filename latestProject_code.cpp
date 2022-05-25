@@ -70,7 +70,7 @@ public:
 
 		return large;
 	}
-	int bitonicmain()
+	void bitonicmain()
 	{
 		vector<int> arr[20];
 		int lar = 0;
@@ -113,37 +113,89 @@ public:
 		cout << "The order in which we should approach is:" << endl;
 		for (int i = 0; i < 20; i++)
 			cout << names[i] << endl;
-		return 0;
 	}
 
 
 	// Function to return max value that can be put in knapsack of capacity W.
-	int knapSack(int W, int wt[], int val[], int n)
-	{
-		int dp[n + 1][W + 1];
-		for (int i = 0; i <= n; i++)
-		{
-			dp[i][0] = 0;
-		}
+	void knapSack(int W, int wt[], int val[], int n)
+{
+    int dp[n + 1][W + 1];
+    for (int i = 0; i <= n; i++)
+    {
+        dp[i][0] = 0;
+    }
 
-		for (int i = 0; i <= W; i++)
-		{
-			dp[0][i] = 0;
-		}
+    for (int i = 0; i <= W; i++)
+    {
+        dp[0][i] = 0;
+    }
 
-		for (int i = 1; i <= n; i++)
-		{
-			for (int j = 1; j <= W; j++)
-			{
-				if (wt[i - 1] > j)
-					dp[i][j] = dp[i - 1][j];
-				else
-					dp[i][j] = max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]);
-			}
-		}
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= W; j++)
+        {
+            if (wt[i - 1] > j)
+                dp[i][j] = dp[i - 1][j];
+            else
+                dp[i][j] = max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]);
+        }
+    }
 
-		return dp[n][W];
-	}
+    cout << "The largest you can get is:" << dp[n][W] << endl;
+    cout << "And the valued used are :" << endl;
+    int res = dp[n][W];
+    int i, w;
+    w = W;
+    for (i = n; i > 0 && res > 0; i--)
+    {
+
+        // either the result comes from the top
+        // (K[i-1][w]) or from (val[i-1] + K[i-1]
+        // [w-wt[i-1]]) as in Knapsack table. If
+        // it comes from the latter one/ it means
+        // the item is included.
+        if (res == dp[i - 1][w])
+            continue;
+        else
+        {
+
+            // This item is included.
+            cout << (i + 1) << "th  :" << wt[i - 1];
+
+            // Since this weight is included its
+            // value is deducted
+            res = res - val[i - 1];
+            w = w - wt[i - 1];
+        }
+    }
+}
+
+void knapmain()
+{
+    int n;
+    cout << "Enter number of people: ";
+    cin >> n;
+    int sum = 7000000;
+    int principle[n];
+    int interest[n];
+    int time[n];
+    int returnOfIn[n];
+    for(int i=0;i<n;i++){
+        cout<<"For Person "<<(i+1)<<endl;
+        cout<<"Enter the amount of loan : ";
+        cin>>principle[i];
+        cout<<"Enter interest: ";
+        cin>>interest[i];
+        cout<<"Enter time: ";
+        cin>>time[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        returnOfIn[i] = (int)(principle[i] * interest[i] * time[i]) / 100;
+    }
+    knapSack(sum, principle, returnOfIn, n);
+    // cout << "The max we can get out of these are: " << largest;
+}
 
 	int minCoins(int V)
 {
