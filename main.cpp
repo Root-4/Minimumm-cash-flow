@@ -115,7 +115,7 @@ public:
 		cout << "\t\t\t\t\tThe order in which we should approach is:" << endl;
 		for (int i = 0; i < 20; i++)
 			cout << "\t\t\t\t\t\t" << names[i] << endl;
-		sleep(2);
+		sleep(5);
 	}
 
 	// Function to return max value that can be put in knapsack of capacity W.
@@ -202,6 +202,7 @@ public:
 		}
 		knapSack(sum, principle, returnOfIn, n);
 		// cout << "The max we can get out of these are: " << largest;
+		sleep(5);
 	}
 
 	int minCoins(int V)
