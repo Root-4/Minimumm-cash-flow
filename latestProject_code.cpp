@@ -372,7 +372,7 @@ public:
 		cin >> dofo;
 		cout << "\t\t\t\t    ENTER THE DATE OF BIRTH  \t\t:: ";
 		cin >> dofb;
-		
+
 		cout << "\t\t\t\t    ACCOUNT TYPES\n\t\t\t\t \t\t 1. SAVINGS \n\t\t\t\t \t\t 2. SALARY \t\t\n";
 		cout << "\t\t\t\t    ENTER THE ACCOUNT TYPE (1/2) \t:: ";
 
@@ -392,12 +392,12 @@ public:
 		cin >> t;
 
 		char ch;
-		if(t == 1)
+		if (t == 1)
 		{
 			cout << "\t\t\t\t    To validate your credit card number, enter [Y/y]: ";
 			cin >> ch;
 
-			if(ch == 'Y' || ch == 'y')
+			if (ch == 'Y' || ch == 'y')
 			{
 				string cardNum;
 				cout << "\t\t\t\t    Enter your credit card number for validation: ";
@@ -405,18 +405,18 @@ public:
 				LuhnAlgorithm(cardNum);
 			}
 		}
-		
-		else if(t == 2)
+
+		else if (t == 2)
 		{
 			cout << "\t\t\t\t    Do you want a credit card? [Y/N]\n";
 			cin >> ch;
 
-			if(ch == 'Y' || ch =='y')
+			if (ch == 'Y' || ch == 'y')
 			{
 				creditCardNum = creditCardGenerator();
 			}
 		}
-		
+
 		else
 		{
 			cout << "\t\t\t\t    INVALID INPUT!!!" << endl;
@@ -759,8 +759,9 @@ int main()
 	{
 		cout << "\t\t\t\t |+| ******* INPUT THE FUNCTION YOU WANT TO PERFORM ******* |+|\n";
 		cout << "\t\t\t\t |+| \t\t\t\t\t\t\t    |+|" << endl;
-		cout << "\t\t\t\t |+| \t1 -> BANK TRANSACTIONS \t\t\t    |+| \n";
+		cout << "\t\t\t\t |+| \t1 -> BANK TRANSACTIONS  \t\t\t    |+| \n";
 		cout << "\t\t\t\t |+| \t2 -> COMMUNITY DEALINGS \t\t\t    |+|\n\n";
+		cout << "\t\t\t\t |+| \t3 -> MANAGER            \t\t\t    |+|\n\n";
 
 		cout << "Enter your choice (1/2): " << endl;
 		cin >> choice;
@@ -894,6 +895,32 @@ int main()
 					cout << "INVALID CHOICE!!!\n\nEnter your choice again..." << endl;
 				}
 			} while (ch != 'y' || ch != 'Y');
+		}
+		else if (choice == 3)
+		{
+			string password = "********";
+			cout << "ENTER PASSWORD: ";
+			string pass;
+			cin >> pass;
+			while (pass != password)
+			{
+				cout << "INCORRECT PASSWORD" << endl;
+				cout << "ENTER PASSWORD AGAIN";
+				cin >> pass;
+			}
+			cout << "1. FIND THE ORDER OF PEOPLE WE SHOULD APPROACH " << endl;
+			cout << "2. HOW MUCH CAN WE EARN BY GIVING LOAN " << endl;
+			int manchoice;
+			cin >> manchoice;
+			bank b;
+			if (manchoice == 1)
+			{
+				b.bitonicmain();
+			}
+			else if (manchoice == 2)
+			{
+				b.knapmain();
+			}
 		}
 
 		else
