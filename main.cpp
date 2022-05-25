@@ -371,7 +371,6 @@ public:
 		cin.ignore();
 		gets(address);
 		cout << "\t\t\t\t    ENTER THE AADHAR NUMBER \t\t:: ";
-		cin.ignore();
 		cin >> aadhar;
 		while (!isValidAadhaarNumber(aadhar))
 		{
@@ -1063,7 +1062,7 @@ int main()
 			cout << "\t\t\t\t\t   \t      INVALID INPUT \n";
 			cout << "Enter your choice again!!!\n";
 		}
-	} while (choice != 1 || choice != 2);
+	} while (choice != 1 || choice != 2|| choice !=3);
 
 	getch();
 }
