@@ -958,6 +958,8 @@ int main()
 				}
 				case 7:
 				{
+				    cout << "PROJECT MADE BY: \n\t\t* AYUSH JAIN \n\t\t* MUDIT GARG \n\t\t* DRISHIKA CHAUHAN \n\t\t* SIDDHARTH KAUSHIK" << endl;
+				    cout << "\t\tBATCH: B-4" << endl;
 					exit(0);
 					break;
 				}
