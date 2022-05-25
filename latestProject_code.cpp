@@ -161,6 +161,7 @@ public:
 		}
 		return false;
 	}
+
 	bool isValidAadhaarNumber(long long adhar)
 	{
 
@@ -186,6 +187,7 @@ public:
 			return false;
 		}
 	}
+
 	bool isValidPhoneNumber(long long no)
 	{
 
@@ -211,6 +213,19 @@ public:
 			return false;
 		}
 	}
+
+	long long creditCardGenerator()
+	{
+		srand(time(0));
+		long long cardNum = 0;
+		for(int i = 0; i < 12; i++)
+		{
+			cardNum = cardNum * 10 + (rand() % 10);
+		}
+
+		return cardNum;
+	}
+
 	void getdata()
 	{
 		cout << endl;
