@@ -20,6 +20,7 @@ class bank
 	char email[30];
 	char address[100];
 	long long aadhar;
+	long long creditCardNum;
 	char dofo[10];
 	char dofb[10];
 	char type[10];
@@ -371,16 +372,56 @@ public:
 		cin >> dofo;
 		cout << "\t\t\t\t    ENTER THE DATE OF BIRTH  \t\t:: ";
 		cin >> dofb;
+		
 		cout << "\t\t\t\t    ACCOUNT TYPES\n\t\t\t\t \t\t 1. SAVINGS \n\t\t\t\t \t\t 2. SALARY \t\t\n";
 		cout << "\t\t\t\t    ENTER THE ACCOUNT TYPE (1/2) \t:: ";
+
 		int t;
 		cin >> t;
+
 		if (t == 1)
 			strcpy(type, "SAVINGS");
 		else if (t == 2)
 			strcpy(type, "SALARY");
+
 		cout << "\t\t\t\t    ENTER THE DEPOSIT AMOUNT \t\t:: ";
 		cin >> deposit;
+
+		cout << "\t\t\t\t    DO YOU HAVE A CREDIT CARD?\n\t\t\t\t \t\t 1.YES \n\t\t\t\t \t\t 2.NO \t\t\n";
+		cout << "\t\t\t\t    ENTER YOUR CHOICE (1/2) \t:: ";
+		cin >> t;
+
+		char ch;
+		if(t == 1)
+		{
+			cout << "\t\t\t\t    To validate your credit card number, enter [Y/y]: ";
+			cin >> ch;
+
+			if(ch == 'Y' || ch == 'y')
+			{
+				string cardNum;
+				cout << "\t\t\t\t    Enter your credit card number for validation: ";
+				cin >> cardNum;
+				LuhnAlgorithm(cardNum);
+			}
+		}
+		
+		else if(t == 2)
+		{
+			cout << "\t\t\t\t    Do you want a credit card? [Y/N]\n";
+			cin >> ch;
+
+			if(ch == 'Y' || ch =='y')
+			{
+				creditCardNum = creditCardGenerator();
+			}
+		}
+		
+		else
+		{
+			cout << "\t\t\t\t    INVALID INPUT!!!" << endl;
+		}
+
 		cout << "\n\n\t\t\t\t====================================================================";
 		accno++;
 	}
