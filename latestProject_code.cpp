@@ -121,7 +121,11 @@ public:
 	// Function to return max value that can be put in knapsack of capacity W.
 	void knapSack(int W, int wt[], int val[], int n)
 	{
-		int dp[n + 1][W + 1];
+		int **dp = new int *[n + 1];
+		for (int i = 0; i <= n; i++)
+		{
+			dp[i] = new int[W + 1];
+		}
 		for (int i = 0; i <= n; i++)
 		{
 			dp[i][0] = 0;
@@ -162,8 +166,7 @@ public:
 			{
 
 				// This item is included.
-				cout << (i + 1) << "th  :" << wt[i - 1];
-
+				cout << "Amount : " << wt[i - 1] << " interest: " << val[i - 1] << endl;
 				// Since this weight is included its
 				// value is deducted
 				res = res - val[i - 1];
