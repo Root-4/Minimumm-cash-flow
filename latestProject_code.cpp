@@ -115,121 +115,121 @@ public:
 			cout << names[i] << endl;
 	}
 
-
 	// Function to return max value that can be put in knapsack of capacity W.
 	void knapSack(int W, int wt[], int val[], int n)
-{
-    int dp[n + 1][W + 1];
-    for (int i = 0; i <= n; i++)
-    {
-        dp[i][0] = 0;
-    }
+	{
+		int dp[n + 1][W + 1];
+		for (int i = 0; i <= n; i++)
+		{
+			dp[i][0] = 0;
+		}
 
-    for (int i = 0; i <= W; i++)
-    {
-        dp[0][i] = 0;
-    }
+		for (int i = 0; i <= W; i++)
+		{
+			dp[0][i] = 0;
+		}
 
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= W; j++)
-        {
-            if (wt[i - 1] > j)
-                dp[i][j] = dp[i - 1][j];
-            else
-                dp[i][j] = max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]);
-        }
-    }
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= W; j++)
+			{
+				if (wt[i - 1] > j)
+					dp[i][j] = dp[i - 1][j];
+				else
+					dp[i][j] = max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]);
+			}
+		}
 
-    cout << "The largest you can get is:" << dp[n][W] << endl;
-    cout << "And the valued used are :" << endl;
-    int res = dp[n][W];
-    int i, w;
-    w = W;
-    for (i = n; i > 0 && res > 0; i--)
-    {
+		cout << "The largest you can get is:" << dp[n][W] << endl;
+		cout << "And the valued used are :" << endl;
+		int res = dp[n][W];
+		int i, w;
+		w = W;
+		for (i = n; i > 0 && res > 0; i--)
+		{
 
-        // either the result comes from the top
-        // (K[i-1][w]) or from (val[i-1] + K[i-1]
-        // [w-wt[i-1]]) as in Knapsack table. If
-        // it comes from the latter one/ it means
-        // the item is included.
-        if (res == dp[i - 1][w])
-            continue;
-        else
-        {
+			// either the result comes from the top
+			// (K[i-1][w]) or from (val[i-1] + K[i-1]
+			// [w-wt[i-1]]) as in Knapsack table. If
+			// it comes from the latter one/ it means
+			// the item is included.
+			if (res == dp[i - 1][w])
+				continue;
+			else
+			{
 
-            // This item is included.
-            cout << (i + 1) << "th  :" << wt[i - 1];
+				// This item is included.
+				cout << (i + 1) << "th  :" << wt[i - 1];
 
-            // Since this weight is included its
-            // value is deducted
-            res = res - val[i - 1];
-            w = w - wt[i - 1];
-        }
-    }
-}
+				// Since this weight is included its
+				// value is deducted
+				res = res - val[i - 1];
+				w = w - wt[i - 1];
+			}
+		}
+	}
 
-void knapmain()
-{
-    int n;
-    cout << "Enter number of people: ";
-    cin >> n;
-    int sum = 7000000;
-    int principle[n];
-    int interest[n];
-    int time[n];
-    int returnOfIn[n];
-    for(int i=0;i<n;i++){
-        cout<<"For Person "<<(i+1)<<endl;
-        cout<<"Enter the amount of loan : ";
-        cin>>principle[i];
-        cout<<"Enter interest: ";
-        cin>>interest[i];
-        cout<<"Enter time: ";
-        cin>>time[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        returnOfIn[i] = (int)(principle[i] * interest[i] * time[i]) / 100;
-    }
-    knapSack(sum, principle, returnOfIn, n);
-    // cout << "The max we can get out of these are: " << largest;
-}
+	void knapmain()
+	{
+		int n;
+		cout << "Enter number of people: ";
+		cin >> n;
+		int sum = 7000000;
+		int principle[n];
+		int interest[n];
+		int time[n];
+		int returnOfIn[n];
+		for (int i = 0; i < n; i++)
+		{
+			cout << "For Person " << (i + 1) << endl;
+			cout << "Enter the amount of loan : ";
+			cin >> principle[i];
+			cout << "Enter interest: ";
+			cin >> interest[i];
+			cout << "Enter time: ";
+			cin >> time[i];
+		}
+		for (int i = 0; i < n; i++)
+		{
+			returnOfIn[i] = (int)(principle[i] * interest[i] * time[i]) / 100;
+		}
+		knapSack(sum, principle, returnOfIn, n);
+		// cout << "The max we can get out of these are: " << largest;
+	}
 
 	int minCoins(int V)
-{
-    // table[i] will be storing the minimum number of coins
-    // required for i value.  So table[V] will have result
-    int coins[] = {2000, 1000, 500, 200, 100, 50, 20, 10};
-    int table[V + 1];
-    int m = 8;
-    // Base case (If given value V is 0)
-    table[0] = 0;
+	{
+		// table[i] will be storing the minimum number of coins
+		// required for i value.  So table[V] will have result
+		int coins[] = {2000, 1000, 500, 200, 100, 50, 20, 10};
+		int table[V + 1];
+		int m = 8;
+		// Base case (If given value V is 0)
+		table[0] = 0;
 
-    // Initialize all table values as Infinite
-    for (int i = 1; i <= V; i++)
-        table[i] = INT_MAX;
+		// Initialize all table values as Infinite
+		for (int i = 1; i <= V; i++)
+			table[i] = INT_MAX;
 
-    // Compute minimum coins required for all
-    // values from 1 to V
-    for (int i = 1; i <= V; i++)
-    {
-        // Go through all coins smaller than i
-        for (int j = 0; j < m; j++)
-            if (coins[j] <= i)
-            {
-                int sub_res = table[i - coins[j]];
-                if (sub_res != INT_MAX && sub_res + 1 < table[i])
-                    table[i] = sub_res + 1;
-            }
-    }
+		// Compute minimum coins required for all
+		// values from 1 to V
+		for (int i = 1; i <= V; i++)
+		{
+			// Go through all coins smaller than i
+			for (int j = 0; j < m; j++)
+				if (coins[j] <= i)
+				{
+					int sub_res = table[i - coins[j]];
+					if (sub_res != INT_MAX && sub_res + 1 < table[i])
+						table[i] = sub_res + 1;
+				}
+		}
 
-    if (table[V] == INT_MAX)
-        return -1;
+		if (table[V] == INT_MAX)
+			return -1;
 
-    return table[V];
-}
+		return table[V];
+	}
 
 	// For credit card validation
 	bool LuhnAlgorithm(string cardNum)
@@ -325,7 +325,7 @@ void knapmain()
 	{
 		srand(time(0));
 		long long cardNum = 0;
-		for(int i = 0; i < 12; i++)
+		for (int i = 0; i < 12; i++)
 		{
 			cardNum = cardNum * 10 + (rand() % 10);
 		}
@@ -610,6 +610,7 @@ void intro()
 class communityFacility
 {
 	int N;
+
 public:
 	communityFacility(int num)
 	{
@@ -669,7 +670,8 @@ public:
 			netAmount[maxCreditIdx] -= min_val;
 			netAmount[maxDebitIdx] += min_val;
 
-			cout << "Person " << maxDebitIdx + 1 << " pays " << min_val << " to " << "Person " << maxCreditIdx + 1 << endl;
+			cout << "Person " << maxDebitIdx + 1 << " pays " << min_val << " to "
+				 << "Person " << maxCreditIdx + 1 << endl;
 
 			maxCreditIdx = getMaxValIdx(netAmount), maxDebitIdx = getMinValIdx(netAmount);
 		}
@@ -822,17 +824,17 @@ int main()
 					cin >> num;
 
 					communityFacility cf(num);
-                
-                    int **amount;
-                    amount = new int *[num];
-                    for(int i = 0; i < num; i++)
-                        amount[i] = new int[num];
 
-					for(int i = 0; i < num; i++)
+					int **amount;
+					amount = new int *[num];
+					for (int i = 0; i < num; i++)
+						amount[i] = new int[num];
+
+					for (int i = 0; i < num; i++)
 					{
-						for(int j = 0; j < num; j++)
+						for (int j = 0; j < num; j++)
 						{
-							cout << "Enter the amount person "<< i+1 << " needs to pay to person " << j+1 << ": ";
+							cout << "Enter the amount person " << i + 1 << " needs to pay to person " << j + 1 << ": ";
 							cin >> amount[i][j];
 						}
 					}
