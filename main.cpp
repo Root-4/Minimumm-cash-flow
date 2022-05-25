@@ -732,7 +732,7 @@ void loading()
 		cout << "\n\t\t\t\t\t     ACCESSING ADMIN PORTAL " << '\n'
 			 << '\t' << "\t\t\t";
 		for (int j = 1; j <= v; j++)
-			cout << "�";
+			cout << "#";
 		cout << "\n\n\t\t\t\t\t" << 2 * v << "%";
 		if (v > 1 && v < 20)
 			cout << "\n\t\t\t\tCreating Temporary files";
