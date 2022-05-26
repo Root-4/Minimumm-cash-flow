@@ -496,7 +496,7 @@ public:
         if (deposit > 100)
         {
 
-            cout << "THE MINIMUM NUMBER OF DENOMINATION REQUIRED ARE: " << minCoins(debit);
+            cout << "\t\t\t\tTHE MINIMUM NUMBER OF DENOMINATION REQUIRED ARE: " << minCoins(debit)<<endl;
         }
         else
         {
