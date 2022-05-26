@@ -917,7 +917,7 @@ int main()
                 cout << "\t\t\t\t |+| \t4 -> MODIFY ACCOUNT DETAILS \t\t\t    |+| \n";
                 cout << "\t\t\t\t |+| \t5 -> SEARCH AN ACCOUNT BY ACCOUNT NO \t\t    |+| \n";
                 cout << "\t\t\t\t |+| \t6 -> SEARCH AN ACCOUNT BY ACCOUNT HOLDER's NAME     |+|\n";
-                cout << "\t\t\t\t |+| \t7 -> WITHDRAW AN AMOUNT    \t\t\t |+|\n";
+                cout << "\t\t\t\t |+| \t7 -> WITHDRAW AN AMOUNT       \t\t\t |+|\n";
                 cout << "\t\t\t\t |+| \t8 -> EXIT   \t\t\t\t\t    |+|\n";
                 cout << "\t\t\t\t |+| \t\t\t\t\t\t\t    |+|" << endl;
                 cout << "\t\t\t\t****************************************************************\n";
