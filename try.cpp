@@ -114,7 +114,7 @@ public:
         // sort(bitonic,bitonic+20);
         cout << "\t\t\t\tTHE ORDER IN WHICH WE SHOULD APPROACH IS ::" << endl;
         for (int i = 0; i < 20; i++)
-            cout << "\t\t\t\t\t\t" << names[i] << endl;
+            cout << "\t\t\t\t\t\t" << names[order[i]] << endl;
         sleep(5);
     }
 
